@@ -1,0 +1,43 @@
+===== ANALYSE DES LOGS LINUX =====
+Date : alx 10 sul 2025 23:47:18 GMT
+
+1. Erreurs critiques (journalctl -p 3 -xb)
+sul 10 20:33:06 srv-LOCAL kernel: vmwgfx 0000:00:02.0: [drm] *ERROR* vmwgfx seems to be running on an unsupported hypervisor.
+sul 10 20:33:06 srv-LOCAL kernel: vmwgfx 0000:00:02.0: [drm] *ERROR* This configuration is likely broken.
+sul 10 20:33:06 srv-LOCAL kernel: vmwgfx 0000:00:02.0: [drm] *ERROR* Please switch to a supported graphics device to avoid problems.
+sul 10 20:33:08 srv-LOCAL systemd-udevd[274]: vboxuser: /etc/udev/rules.d/60-vboxadd.rules:2 Only network interfaces can be renamed, ignoring NAME="vboxuser".
+sul 10 20:33:08 srv-LOCAL systemd-udevd[275]: vboxguest: /etc/udev/rules.d/60-vboxadd.rules:1 Only network interfaces can be renamed, ignoring NAME="vboxguest".
+sul 10 20:33:57 srv-LOCAL systemd-udevd[1078]: vboxuser: /etc/udev/rules.d/60-vboxadd.rules:2 Only network interfaces can be renamed, ignoring NAME="vboxuser".
+sul 10 20:33:57 srv-LOCAL systemd-udevd[1079]: vboxguest: /etc/udev/rules.d/60-vboxadd.rules:1 Only network interfaces can be renamed, ignoring NAME="vboxguest".
+sul 10 20:34:08 srv-LOCAL systemd[1]: Failed to start vboxadd.service.
+░░ Subject: A start job for unit vboxadd.service has failed
+░░ Defined-By: systemd
+░░ Support: http://www.ubuntu.com/support
+░░ 
+░░ A start job for unit vboxadd.service has finished with a failure.
+░░ 
+░░ The job identifier is 124 and the job result is failed.
+sul 10 20:34:10 srv-LOCAL gnome-session-binary[2158]: GLib-GIO-CRITICAL: g_bus_get_sync: assertion 'error == NULL || *error == NULL' failed
+sul 10 20:34:10 srv-LOCAL gnome-session-binary[2158]: GLib-GIO-CRITICAL: g_bus_get_sync: assertion 'error == NULL || *error == NULL' failed
+sul 10 20:34:52 srv-LOCAL gdm-password][2446]: gkr-pam: unable to locate daemon control file
+sul 10 20:34:58 srv-LOCAL pulseaudio[2465]: ALSA woke us up to read new data from the device, but there was actually nothing to read.
+sul 10 20:34:58 srv-LOCAL pulseaudio[2465]: Most likely this is a bug in the ALSA driver 'snd_intel8x0'. Please report this issue to the ALSA developers.
+sul 10 20:34:58 srv-LOCAL pulseaudio[2465]: We were woken up with POLLIN set -- however a subsequent snd_pcm_avail() returned 0 or another value < min_avail.
+sul 10 20:34:58 srv-LOCAL systemd[2455]: Failed to start Application launched by gnome-session-binary.
+░░ Subject: A start job for unit UNIT has failed
+░░ Defined-By: systemd
+░░ Support: http://www.ubuntu.com/support
+░░ 
+░░ A start job for unit UNIT has finished with a failure.
+░░ 
+░░ The job identifier is 206 and the job result is failed.
+sul 10 20:34:58 srv-LOCAL systemd[2455]: Failed to start Application launched by gnome-session-binary.
+
+2. Dernières erreurs dans /var/log/syslog
+Jul 11 04:16:29 srv-LOCAL gnome-shell[4373]: JS ERROR: Failed to initialize fprintd service: Gio.IOErrorEnum: GDBus.Error:net.reactivated.Fprint.Error.NoSuchDevice: No devices available#012asyncCallback@resource:///org/gnome/gjs/modules/core/overrides/Gio.js:114:23
+Jul 11 04:17:50 srv-LOCAL code.desktop[5281]: [5281:0711/041750.353721:ERROR:atom_cache.cc(231)] Add WM_CHANGE_STATE to kAtomsToCache
+Jul 10 23:18:17 srv-LOCAL apt-helper[5966]: E: Sub-process nm-online returned an error code (1)
+Jul 10 23:40:54 srv-LOCAL gnome-shell[4373]: JS ERROR: Failed to initialize fprintd service: Gio.IOErrorEnum: GDBus.Error:net.reactivated.Fprint.Error.NoSuchDevice: No devices available#012asyncCallback@resource:///org/gnome/gjs/modules/core/overrides/Gio.js:114:23
+Jul 10 23:43:59 srv-LOCAL gnome-shell[4373]: libinput error: event2  - AT Translated Set 2 keyboard: client bug: event processing lagging behind by 23ms, your system is too slow
+
+3. Logs du service SSH (journalctl -u ssh.service)
